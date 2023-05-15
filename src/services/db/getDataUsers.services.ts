@@ -3,14 +3,14 @@ import { FireBaseGetStore } from "firebase";
 import { doc, onSnapshot } from "firebase/firestore";
 interface UserDocs {
   rol: string,
-  todo: Encuesta[]
+  encuestas: Encuesta[]
 }
 
-export const getDataUsers = (nameDataBase: string, id: string) => {
+export const getDataUsers = (nameDataBase: string, id: string): Promise<Encuesta[]> => {
   return new Promise((res, rej) => {
     onSnapshot(doc(FireBaseGetStore, nameDataBase, id), (doc) => {
       if (doc.exists()) {
-        res(doc.data());
+        res(doc.data().encuesta as Encuesta[]);
       } else {
         rej(new Error("no existe documento"))
       }

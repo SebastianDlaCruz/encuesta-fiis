@@ -6,14 +6,12 @@ import { AdminState, Encuesta, TypeQuestion } from "./types";
 
 const now = new Date();
 
-let encuesta: Encuesta[] = [];
 
-const { list } = await getDataUsers('users', 'ywNoLPVjpsMzMNssddyh7AypT3t2');
+const res = await getDataUsers('users', 'ywNoLPVjpsMzMNssddyh7AypT3t2');
 
-console.log(list)
 
 export const adminInitialState: AdminState = {
-  encuestas: list
+  encuestas: res
 
   /* [
     {

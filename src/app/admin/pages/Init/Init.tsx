@@ -1,19 +1,19 @@
-import { Box, Button, Stack, Typography } from "@mui/material"
+import { Box, Button, Stack, Typography } from "@mui/material";
 import { GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
-import Table, { Operations } from "app/shared/components/Table/Table"
-import { Colors } from "app/shared/utils/colors"
-import Modal, { Type } from "app/shared/components/Modal/Modal"
+import { AdminPath, getAdminRoutes } from "app/admin/admin-routes";
+import { AdminStoreState } from "app/admin/store/store";
+import Modal, { Type } from "app/shared/components/Modal/Modal";
+import Table, { Operations } from "app/shared/components/Table/Table";
+import { Colors } from "app/shared/utils/colors";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { AdminStoreState } from "app/admin/store/store";
 import { Link } from "react-router-dom";
-import { AdminPath, getAdminRoutes } from "app/admin/admin-routes";
 import './Init.css';
 
 const Init: React.FC = () => {
   const { encuestas } = useSelector((state: AdminStoreState) => state.admin);
-
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+
 
   const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', maxWidth: 100 },
@@ -34,12 +34,13 @@ const Init: React.FC = () => {
     {
       field: 'view',
       headerName: 'Ver encuesta',
-      renderCell: ({ row }: GridRenderCellParams) => (<Link className="linkEncuesta" to={getAdminRoutes(AdminPath.Encuesta)+`/${row.id}`}>Ver encuesta</Link>),
+      renderCell: ({ row }: GridRenderCellParams) => (<Link className="linkEncuesta" to={getAdminRoutes(AdminPath.Encuesta) + `/${row.id}`}>Ver encuesta</Link>),
       minWidth: 180
     },
   ];
 
   useEffect(() => {
+
   }, [encuestas])
 
   return (

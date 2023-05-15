@@ -57,7 +57,7 @@ const Login: React.FC = () => {
             cargo: 'administrador',
             username: response.email,
             id: response.uid
-          }));
+          })); w
           navigate('administrador' === CargoUser.Admin ? getAdminRoutes(AdminPath.Init) : getUserRoutes(UserPath.Init))
         } else {
           setHasUser(true);

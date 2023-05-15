@@ -47,13 +47,16 @@ const Login: React.FC = () => {
   });
 
   const verifyLogin = async (user: string, password: string) => {
+
     getUsersFb(user, password)
       .then((response) => {
-        if (response.ok) {
+
+        if (response.ok && response.uid && response.email) {
           setHasUser(false);
           dispatch(initUser({
             cargo: 'administrador',
-            username: user
+            username: response.email,
+            id: response.uid
           }));
           navigate('administrador' === CargoUser.Admin ? getAdminRoutes(AdminPath.Init) : getUserRoutes(UserPath.Init))
         } else {

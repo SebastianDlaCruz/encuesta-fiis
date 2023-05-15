@@ -6,7 +6,7 @@ export const getUsersFb = async (user: string, password: string) => {
 
     const response = await signInWithEmailAndPassword(FireBaseGetAuth, user, password);
     const { email, uid } = response.user;
-
+    console.log(response)
     return {
       ok: true,
       email,

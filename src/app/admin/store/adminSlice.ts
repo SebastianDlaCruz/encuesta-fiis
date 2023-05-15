@@ -1,11 +1,21 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { AdminState, Encuesta, Question, TypeQuestion } from "./types";
 import { formatDate } from "app/shared/utils/formatDate";
+import { getDataUsers } from "services/db/getDataUsers.services";
+import { AdminState, Encuesta, TypeQuestion } from "./types";
+
 
 const now = new Date();
 
+let encuesta: Encuesta[] = [];
+
+const { list } = await getDataUsers('users', 'ywNoLPVjpsMzMNssddyh7AypT3t2');
+
+console.log(list)
+
 export const adminInitialState: AdminState = {
-  encuestas: [
+  encuestas: list
+
+  /* [
     {
       id: 1,
       description: "Encuesta 1",
@@ -40,7 +50,7 @@ export const adminInitialState: AdminState = {
       fecha: formatDate(now),
       questions: [],
     },
-  ],
+  ], */
 };
 
 export const adminSlice = createSlice({

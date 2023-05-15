@@ -1,16 +1,18 @@
 // Types by state
 export enum CargoUser {
-    Estudiante = 'estudiante',
-    Admin = 'administrador'
+  Estudiante = 'estudiante',
+  Admin = 'administrador'
 };
 
 
 export interface UserProfile {
-    username: string;
-    cargo: string
+  id: string;
+  username: string;
+  cargo: string
+
 }
 
 export interface AppState {
-    isFetching: boolean,
-    user: UserProfile | null,
+  isFetching: boolean,
+  user: UserProfile | null,
 }
